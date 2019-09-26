@@ -4,9 +4,9 @@ document.body.appendChild(mainElement)
 
 
 
-var resultElement = document.createElement("div");
-resultElement.id = "result"
-mainElement.appendChild(resultElement)
+var displayZone = document.createElement("div");
+displayZone.id = "result"
+mainElement.appendChild(displayZone)
 
 var resetBtn = document.createElement("button");
 resetBtn.id = "reset"
@@ -24,9 +24,36 @@ for (let i = 0; i < keys.length; i++){
     allBtn.appendChild(input)
     input.innerHTML = keys[i];
 
-    input.addEventListener("click" ,function(){   
-        resultElement.innerHTML = resultElement.innerHTML + this.innerHTML;
+    input.addEventListener("click" ,function(){ 
+
+        var pressedKey = this.innerHTML;
+
+        if(pressedKey == "=") {
+            displayZone.innerHTML = eval(displayZone.innerHTML)  
+        } else {
+            if(pressedKey == "+" + displayZone.innerHTML == "+"){
+                console.log("prout");
+                
+            } else {
+                displayZone.innerHTML = displayZone.innerHTML + pressedKey;
+            }
+        } 
+
+        
+
+        
+        
+        
+        
+        
+
+    
    
     })
 }
+ resetBtn.addEventListener("click", function(){
+     displayZone.innerHTML = ""
+ })
+
+
 
